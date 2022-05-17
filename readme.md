@@ -53,3 +53,10 @@ Hostname/address: db, Urename: postgres, Password: postgrespass
 Данные загрузились успешно.
 
 ![alt text](https://github.com/IlyasDevelopment/Elasticsearch/blob/main/screenshots/8.png "Таблица")
+
+Попробуем найти тексты по запросу "Всем привет". Сервис найдет все тексты, где встречается хотя бы одно из слов, но в целом вариантов настройки поиска много.
+
+![alt text](https://github.com/IlyasDevelopment/Elasticsearch/blob/main/screenshots/9.png "Таблица")
+
+Основные библиотеки
+# pip install elasticsearch fastapi uvicorn fastapi-sqlalchemy alembic pydantic psycopg2 pandas python-dotenv
