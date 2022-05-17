@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+
+  db:
+    container_name: psql_db
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    ports:
+      - 7080:80
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    depends_on:
+      - db
+
+  elasticsearch:
+    container_name: elsearch
+    image: elasticsearch:7.17.1
+    ports:
+      - 9200:9200
+    environment:
+      - discovery.type=single-node
+
+  kibana:
+    container_name: kibana
+    image: kibana:7.17.1
+    ports:
+      - 5601:5601
+
+  app:
+      container_name: app
+      build: .
+      command: bash -c 'uvicorn main:app --host 0.0.0.0 --port 8000 --reload'
+      restart: always
+      volumes:
+        - .:/app
+      ports:
+        - 8000:8000
+      depends_on:
+        - db
