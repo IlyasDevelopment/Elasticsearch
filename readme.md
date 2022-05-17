@@ -8,7 +8,7 @@ git clone https://github.com/IlyasDevelopment/Elasticsearch
 
 docker-compose build
 
-docker-compose run app alembic upgrade head
+docker-compose run app alembic upgrade head (Если сразу не виден порт 5432, повторить ввод строки)
 
 docker-compose up
 
@@ -54,9 +54,9 @@ Hostname/address: db, Urename: postgres, Password: postgrespass
 
 ![alt text](https://github.com/IlyasDevelopment/Elasticsearch/blob/main/screenshots/8.png "Таблица")
 
-Попробуем найти тексты по запросу "Всем привет". Сервис найдет все тексты, где встречается хотя бы одно из слов, но в целом вариантов настройки поиска много.
+Попробуем найти тексты по запросу "Всем привет". Сервис найдет все тексты, где встречается хотя бы одно из слов, но в целом вариантов настройки поиска много. Ранжирование по дате от новых постов к старым.
 
 ![alt text](https://github.com/IlyasDevelopment/Elasticsearch/blob/main/screenshots/9.png "Таблица")
 
-Основные библиотеки
-# pip install elasticsearch fastapi uvicorn fastapi-sqlalchemy alembic pydantic psycopg2 pandas python-dotenv
+Основные библиотеки:
+pip install elasticsearch fastapi uvicorn fastapi-sqlalchemy alembic pydantic psycopg2 pandas python-dotenv
